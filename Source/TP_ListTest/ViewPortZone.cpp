@@ -330,7 +330,15 @@ void UViewPortZone::SelectActorWithCtrlKey(AActor* actor, bool isCtrlKeyDown)
 
 void UViewPortZone::ForceSelectActor(AActor* actor, bool isSelect)
 {
-    m_CurrentSelectedActors.AddUnique(actor);
+    if (isSelect)
+    {
+        m_CurrentSelectedActors.AddUnique(actor);
+    }
+    else
+    {
+        m_CurrentSelectedActors.Remove(actor);
+    }
+
     SetActorOutLine(actor, isSelect);
     SelectListViewActor(actor, isSelect);
 
