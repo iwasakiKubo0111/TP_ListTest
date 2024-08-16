@@ -6,6 +6,8 @@
 #include "UObject/NoExportTypes.h"
 #include "EntryObject.generated.h"
 
+class UViewPortZone;
+
 /**
  * î•ñ•Û—p‚ÌƒNƒ‰ƒX
  */
@@ -14,7 +16,10 @@ class TP_LISTTEST_API UEntryObject : public UObject
 {
 	GENERATED_BODY()
 public:
+	AActor* m_owningActor;
+	UViewPortZone* m_owningViewPortZoneInstance;
 	FText m_headerText;
 	FText m_bodyText;
-	bool m_IsExpand;
+	bool m_isExpand;
+	bool m_isSelect;
 };

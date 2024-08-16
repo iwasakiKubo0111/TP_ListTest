@@ -5,9 +5,10 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include <Components/ScrollBox.h>
+#include "ViewPortZone.h"
+#include <Components\ListView.h>
 #include "ListViewCPP.generated.h"
 
-class UListView;
 class UUserWidget;
 
 /**
@@ -20,7 +21,13 @@ class TP_LISTTEST_API UListViewCPP : public UUserWidget
 	
 public:
 	virtual void NativeConstruct() override;
-private:
+	void FilterActorsWithMeshes(TArray<AActor*>& OutActors);
+	UViewPortZone* m_viewPortZone;
+
 	UPROPERTY(meta = (BindWidget))
 	UListView* m_listView = nullptr;
+protected:
+	virtual FReply  NativeOnMouseButtonDown(const FGeometry& MyGeometry, const FPointerEvent& MouseEvent) override;
+private:
+	
 };

@@ -7,6 +7,8 @@
 #include <Components/TextBlock.h>
 #include "Blueprint/IUserObjectListEntry.h"
 #include <Components/ExpandableArea.h>
+#include <Components\Button.h>
+#include "ListViewCPP.h"
 #include "ListViewEntry.generated.h"
 
 class UEntryObject;
@@ -28,6 +30,9 @@ public:
 	UTextBlock* m_headerText;
 
 	UPROPERTY(meta = (BindWidget))
+	UButton* m_headerButton;
+
+	UPROPERTY(meta = (BindWidget))
 	UTextBlock* m_bodyText;
 
 	UEntryObject* m_owningEntryObjectInstance;
@@ -38,5 +43,7 @@ public:
 private:
 	virtual void NativeOnListItemObjectSet(UObject* ListItemObject) override;
 
+	UFUNCTION()
+	void OnButtonClick_header();
 
 };
